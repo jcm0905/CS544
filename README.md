@@ -69,10 +69,8 @@ python3 file_transfer.py server
 ```
 
 4. Run the client in the other terminal
-
-Be sure to replace <filename> with the name of the actual file to be sent
 ```sh
-python3 file_transfer.py client -f <filename>
+python3 file_transfer.py client -f test_file
 ```
 
 The server will continue to run, and you can keep running the client by executing the same command in (4) to continue transferring different files to the server.
