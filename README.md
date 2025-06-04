@@ -10,6 +10,9 @@ This project runs a simple file transfer application using the QUIC protocol in 
 1. Clone the repository:
 ```sh
 git clone https://github.com/jcm0905/CS544.git
+```
+Navigate to the FTPQUIC folder:
+```sh
 cd FTPQUIC
 ```
 
