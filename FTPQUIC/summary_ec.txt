@@ -1,0 +1,46 @@
+Extra Credit Summary
+
+This course project has given me the opportunity to have a hands-on 
+experience of designing and implementing a protocol. Although I do not have 
+much experience with protocol implementation through socket programming,
+I found the demo files available in Blackboard Learn helpful when moving
+forward with my project idea of implementing a file transfer protocol over
+QUIC. As I progressed through the project, I quickly learned that there are areas 
+for improvement in my original proposed design, which led to many adjustments and
+refinements needed for the implementation to work. Despite these challenges,
+I understand that this project serves as a great example of how software
+engineering is a feedback-driven process, where theoretical design might
+not reflect the actual outcome during implementation.
+
+In reviewing my original design compared to my current implementation of my
+file transfer protocol over QUIC, there are some deviations between both.
+For instance, one of the more significant changes in implementation involved
+adding extra functions to the pdu.py file to handle JSON encoding of files.
+During my testing, I found out that my protocol kept failing whenever I tried
+to transfer a larger text file that would need to be divided into chunks.
+Specifically, a JSON error would occur stating that the data received on the server
+side was incomplete given that the file content is split into chunks. To 
+resolve this issue, I decided to conduct some research on the problem and found an
+additional Python libary to help me construct a solution. Given that the error would
+occur when the program tries to use JSON to serialize/deserialize incomplete data that is
+not properly terminated, I created two functions in pdu.py that forms a "frame"
+around a datagram with a pre-determined prefix length to ensure that data
+no longer appears as incomplete during the file transfer process. Despite being
+an unexpected issue, the solution builds on top of the serialization/deserialization process and 
+makes the process safer when transferring files between client and server. Additionally, another
+change made to my implementation that was different from the original design is the inclusion of
+sequence numbers for the file chunks sent from client to server. While I did consider implementing
+a checksum to verify the file transfer, I did not consider additional fields like a sequence number
+that can help track the order of the file chunks, ensuring that they arrive in order. This field was
+added to the Datagram class in the pdu.py file which will help track the order of the file chunks in case
+they arrive out of order due to delays during the transfer process.
+
+Even though I had to deviate from my original design, it is important to 
+realize that every design will never become ideal, where we can expect an exact
+replica for implementation. Over the course of coding and testing, it is important
+to understand that things may change from design to implementation whether tools may
+not exist to accomplish such a task or unexpected behaviors occur that was previously overlooked.
+By doucmenting these insights and changes, I gained valuable experience of
+the feedback-driven process involved in software engineering, where my proposed
+design should be used as an outline that can evolve into something more robust,
+reliable, and realistic. 
