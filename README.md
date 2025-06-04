@@ -2,9 +2,12 @@
 
 This project runs a simple file transfer application using the QUIC protocol in Python with the 'aioquic' library.
 
+NOTE: This project was tested on a Windows computer using Windows Subsystem for Linux (WSL)
+
 ## Software Requirements
 
 - Python 3.10 or higher
+- Access to a Linux/Unix terminal
 
 ## Setup
 1. Clone the repository:
@@ -58,24 +61,24 @@ echo "Created a file for testing this program..." > test_file
 
 2. Navigate to the `FTPQUIC` folder in both terminals
 
-4. Activate the Python Virtual Environment in both terminals
+4. Activate the Python Virtual Environment in both terminals:
 ```sh
 source venv/bin/activate
 ```
 
-3. Start the server in one terminal
+3. Start the server in one terminal:
 ```sh
 python3 file_transfer.py server
 ```
 
-4. Run the client in the other terminal
+4. Run the client in the other terminal:
 ```sh
 python3 file_transfer.py client -f test_file
 ```
+After `-f`, feel free to use any file name for a file you would like to send from the client to the server.
+The server will continue to run, and you can keep running the client by executing the same command as shown in (4) to continue transferring different files to the server.
 
-The server will continue to run, and you can keep running the client by executing the same command in (4) to continue transferring different files to the server.
-
-5. When finished, exit the Python Virtual Environment in both terminals
+5. When finished, exit the Python Virtual Environment in both terminals:
 ```sh
 deactivate
 ```
@@ -84,13 +87,14 @@ deactivate
 
 After running the program:
 - Navigate to the `server_files` directory to see if the file is present there
-- The transferred file will have a `_svr` in its name to indicate a successful file transfer
+- The transferred file will have a `_svr` in its name
 - In a free terminal, run this command to perform a comparison between both files:
 ```sh
-diff <filename> server_files/<filename>
+diff test_file server_files/test_file_svr
 ```
 
 If there is no output, it means that there is no difference between the two files (i.e., the file transferred successfully)
+Again, feel free to change the file names to specify which files are being compared
 
 ## Deleting the Python Virtual Environment
 
@@ -125,14 +129,14 @@ The client and server can be configured using command-line arguments.
 - `l`, `--listen`: Address for server to listen on
 - `p`, `--port`: Port number for server to listen on
 
-Run these commands for client and server for more information about these command line arguments:
+For more information about these command line arguments, run these commands for the client side and server side:
 
-Client:
+Client Side:
 ```sh
 python3 file_transfer.py client -h
 ```
 
-Server:
+Server Side:
 ```sh
 python3 file_transfer.py server -h
 ```
