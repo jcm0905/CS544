@@ -56,7 +56,7 @@ echo "Created a file for testing this program..." > test_file
 
 1. Open 2 terminals: one for the client and one for the server
 
-2. Navigate to the main project folder in both terminals: FTPQUIC
+2. Navigate to the `FTPQUIC` folder in both terminals
 
 4. Activate the Python Virtual Environment in both terminals
 ```sh
@@ -86,7 +86,7 @@ deactivate
 
 After running the program:
 - Navigate to the `server_files` directory to see if the file is present there
-- The transferred file will have a `_svr ` in its name to indicate a successful file transfer
+- The transferred file will have a `_svr` in its name to indicate a successful file transfer
 - In a free terminal, run this command to perform a comparison between both files:
 ```sh
 diff <filename> server_files/<filename>
