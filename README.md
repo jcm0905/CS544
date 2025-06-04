@@ -11,18 +11,18 @@ This project runs a simple file transfer application using the QUIC protocol in 
 ```sh
 git clone https://github.com/jcm0905/CS544.git
 ```
-Navigate to the FTPQUIC folder:
+Navigate to the `FTPQUIC` folder:
 ```sh
-cd FTPQUIC
+cd CS544/FTPQUIC
 ```
 
 2. Generate the necessary authentication certificates
 
-Navigate to the certs/ folder and run the following command:
+Navigate to the `certs` folder and run the following command:
 ```sh
 bash gencert.sh
 ```
-3. In the main project directory, create a Python Virtual Environment
+3. In the `FTPQUIC` folder, create a Python Virtual Environment
 ```sh
 python3 -m venv venv
 ```
@@ -32,7 +32,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-6. Install the required libraries to run the program
+6. Install the libraries needed to run the program
 ```sh
 pip install -r requirements.txt
 ```
@@ -42,7 +42,7 @@ pip install -r requirements.txt
 pip list
 ```
 
-8. Exit the Python Virtual Enviornment
+8. Exit the Python Virtual Environment
 ```sh
 deactivate
 ```
@@ -52,29 +52,32 @@ deactivate
 echo "Created a file for testing this program..." > test_file
 ```
 
-
 ## Running the Project
 
-1. Open 2 terminals: one for client and one for server
+1. Open 2 terminals: one for the client and one for the server
 
-2. Activate the Python Virtual Environment on both terminals
+2. Navigate to the main project folder in both terminals: FTPQUIC
+
+4. Activate the Python Virtual Environment in both terminals
 ```sh
 source venv/bin/activate
 ```
 
-3. Start the server
+3. Start the server in one terminal
 ```sh
 python3 file_transfer.py server
 ```
 
-4. Run the client
+4. Run the client in the other terminal
+
+Be sure to replace <filename> with the name of the actual file to be sent
 ```sh
 python3 file_transfer.py client -f <filename>
 ```
 
 The server will continue to run, and you can keep running the client by executing the same command in (4) to continue transferring different files to the server.
 
-5. When finished, exit the Python Virtual Environment on both terminals
+5. When finished, exit the Python Virtual Environment in both terminals
 ```sh
 deactivate
 ```
@@ -82,17 +85,18 @@ deactivate
 ## Verify File Transfer
 
 After running the program:
-- Navigate to the server_files/ directory to see if the file is present there
-- Run this command to perform a comparison between both files:
+- Navigate to the `server_files` directory to see if the file is present there
+- The transferred file will have a `_svr ` in its name to indicate a successful file transfer
+- In a free terminal, run this command to perform a comparison between both files:
 ```sh
 diff <filename> server_files/<filename>
 ```
 
-If there is no output, it means that there is no difference between both files (i.e., teh file transferred successfully)
+If there is no output, it means that there is no difference between the two files (i.e., the file transferred successfully)
 
-## Deleting Python Virtual Enviornment
+## Deleting the Python Virtual Environment
 
-If you would like to delete the virtual enviornment in the project directory, run this command:
+If you would like to delete the virtual environment in the project directory, run this command:
 ```sh
 rm -rf venv
 ```
@@ -107,12 +111,12 @@ rm -rf server_files/
 
 ## Configuration
 
-The client and server can be configured using command line arguments.
+The client and server can be configured using command-line arguments.
 
 ### Client Arguments
 
 - `-s`, `--server`: Server address (e.g., localhost (default), `127.0.0.1`, etc.)
--  `-p`, `--port`: Server port number (e.g., 4433 (default), 5000, etc.)
+- `-p`, `--port`: Server port number (e.g., 4433 (default), 5000, etc.)
 - `-c`, `--cert-file`: Path to the QUIC certificate (.pem file)
 - `-f`, `--filename`: Path to the file to be sent to the server
 
@@ -123,7 +127,7 @@ The client and server can be configured using command line arguments.
 - `l`, `--listen`: Address for server to listen on
 - `p`, `--port`: Port number for server to listen on
 
-Run this commands for client and server for more information about these command line arguments:
+Run these commands for client and server for more information about these command line arguments:
 
 Client:
 ```sh
