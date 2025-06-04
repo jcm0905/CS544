@@ -2,7 +2,7 @@
 
 This project runs a simple file transfer application using the QUIC protocol in Python with the 'aioquic' library.
 
-NOTE: This project was tested on a Windows computer using Windows Subsystem for Linux (WSL)
+NOTE: This project was tested on Windows 11 using Windows Subsystem for Linux (WSL)
 
 ## Software Requirements
 
