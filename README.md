@@ -9,8 +9,8 @@ This project runs a simple file transfer application using the QUIC protocol in 
 ## Setup
 1. Clone the repository:
 ```sh
-git clone
-cd
+git clone https://github.com/jcm0905/CS544.git
+cd FTPQUIC
 ```
 
 2. Generate the necessary authentication certificates
