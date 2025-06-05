@@ -11,7 +11,7 @@ MSG_TYPE_FILE_DATA = 0x03
 MSG_TYPE_FILE_END = 0x04
 MSG_TYPE_FILE_ACK = 0x05
 
-# Constant for the length prefix for the PDU
+# Constant for the length prefix for the framed message
 LENGTH_PREFIX_SIZE = 4
 
 # Updated class to include filename, checksum, and sequence number as fields
@@ -38,21 +38,26 @@ class Datagram:
     def from_bytes(json_bytes):
         return Datagram(**json.loads(json_bytes.decode('utf-8')))
     
-    # This function will add 4-byte length prefix before the message
+    """
+    This function will add a 4-byte length header prefix before the message
+    Format:
+    [4-byte length] [message data]
+    """
     def to_framed_bytes(self):
         raw = self.to_bytes()
-        return struct.pack(">I", len(raw)) + raw
+        return struct.pack(">I", len(raw)) + raw # Prepend with 4-byte length prefix (big-endian)
     
-    # This function will extract a datagram from a buffer with 4-byte prefix
+    # This function will extract a datagram from a byte buffer with a 4-byte prefix, which stores framed datagrams
     @staticmethod
     def from_framed_bytes(buffer: bytes):
         if len(buffer) < LENGTH_PREFIX_SIZE:
             return None, buffer # Incomplete Header
         
-        length = struct.unpack(">I", buffer[:LENGTH_PREFIX_SIZE])[0]
+        length = struct.unpack(">I", buffer[:LENGTH_PREFIX_SIZE])[0] # Find out how many bytes the datagram uses
+        
         if len(buffer) < LENGTH_PREFIX_SIZE + length:
-            return None, buffer # Incomplete payload
+            return None, buffer # Incomplete Payload
         
         datagram_bytes = buffer[LENGTH_PREFIX_SIZE:LENGTH_PREFIX_SIZE + length]
         remaining = buffer[LENGTH_PREFIX_SIZE + length:]
-        return Datagram.from_bytes(datagram_bytes), remaining
+        return Datagram.from_bytes(datagram_bytes), remaining # Deserialize datagram and return it with the remaining buffer
