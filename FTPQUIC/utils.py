@@ -9,6 +9,7 @@ from ft_quic import QuicStreamEvent
 # This function calculates the checksum of the entire file and returns it as a hexadecimal string
 async def calculate_checksum(file):
     hash = hashlib.sha256()
+    # Read file chunks and hash them for the checksum
     try:
         with open(file, "rb") as f:
             while file_chunk := f.read(4096):
