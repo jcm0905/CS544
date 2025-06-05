@@ -2,12 +2,13 @@
 
 This project runs a simple file transfer application using the QUIC protocol in Python with the 'aioquic' library.
 
-NOTE: This project was tested on Windows 11 using Windows Subsystem for Linux (WSL)
+NOTE: This project was tested on Windows 11 using Windows Subsystem for Linux (WSL) with the `bash` shell.
 
 ## Software Requirements
 
-- Python 3.10 or higher
-- Access to a Linux/Unix terminal
+- Linux/Unix using the `bash` shell
+- Python 3.10 or higher (with `pip`)
+- Other software requirements are located here: https://github.com/jcm0905/CS544/blob/main/FTPQUIC/requirements.txt
 
 ## Setup
 1. Clone the repository:
@@ -33,17 +34,19 @@ bash gencert.sh
 python3 -m venv venv
 ```
 
+You should see a new directory called `venv` appear in the `FTPQUIC` folder.
+
 5. Activate the Python Virtual Environment:
 ```sh
 source venv/bin/activate
 ```
 
-6. Install the libraries needed to run the program:
+6. Install the software dependencies needed to run the program in the Python Virtual Environment:
 ```sh
 pip install -r requirements.txt
 ```
 
-7. Confirm installation of the libraries:
+7. Confirm installation of software dependencies:
 ```sh
 pip list
 ```
@@ -69,17 +72,20 @@ echo "Created a file for testing this program..." > test_file
 source venv/bin/activate
 ```
 
-3. Start the server in one terminal:
+3. Start the server with defaults in one terminal:
 ```sh
 python3 file_transfer.py server
 ```
 
-4. Run the client in the other terminal:
+4. Run the client with defaults in the other terminal:
 ```sh
 python3 file_transfer.py client -f test_file
 ```
+NOTE: The server does not need to be started first. Alternatively, you can run the client first, where it can find the server.
+The client will timeout after some time if it cannot find the server with the appropriate hostname/IP and port number.
+
 After `-f`, feel free to use any file name for a file you would like to send from the client to the server.
-The server will continue to run, and you can keep running the client by executing the same command as shown in (4) to continue transferring different files to the server.
+The server will continue to run, and you can continue running the client by executing the same command as shown in (4) to transfer different files to the server.
 
 5. When finished, exit the Python Virtual Environment in both terminals:
 ```sh
@@ -91,25 +97,23 @@ deactivate
 After running the program:
 - Navigate to the `server_files` directory to see if the file is present there
 - The transferred file will have a `_svr` in its name
-- In a free terminal, be sure you're in the `FTPQUIC` folder and run this command to perform a comparison between both files:
+- In a free terminal, be sure you're in the `FTPQUIC` folder and run this command to perform a comparison between the original file and the transferred file:
 ```sh
 diff test_file server_files/test_file_svr
 ```
 
 If there is no output, it means that there is no difference between the two files (i.e., the file transferred successfully)
-Again, feel free to change the file names to specify which files are being compared
 
 ## Deleting the Python Virtual Environment
 
-If you would like to delete the virtual environment in the project directory, run this command:
+If you would like to delete the virtual environment `venv` in the `FTPQUIC` folder, run this command:
 ```sh
 rm -rf venv
 ```
 
-
 ## Deleting server_files/ directory
 
-If you would like to remove the `server_files` directory to start from scratch, run this command:
+If you would like to remove the `server_files` directory, run this command:
 ```sh
 rm -rf server_files/
 ```
