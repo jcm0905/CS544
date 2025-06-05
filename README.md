@@ -21,36 +21,39 @@ cd CS544/FTPQUIC
 
 2. Generate the necessary authentication certificates
 
-Navigate to the `certs` folder and run the following command:
+Navigate to the `certs` folder and run the `gencert.sh` script:
+```sh
+cd certs
+```
 ```sh
 bash gencert.sh
 ```
-3. In the `FTPQUIC` folder, create a Python Virtual Environment
+3. In the `FTPQUIC` folder, create a Python Virtual Environment:
 ```sh
 python3 -m venv venv
 ```
 
-5. Activate the Python Virtual Environment
+5. Activate the Python Virtual Environment:
 ```sh
 source venv/bin/activate
 ```
 
-6. Install the libraries needed to run the program
+6. Install the libraries needed to run the program:
 ```sh
 pip install -r requirements.txt
 ```
 
-7. Confirm installation of the libraries
+7. Confirm installation of the libraries:
 ```sh
 pip list
 ```
 
-8. Exit the Python Virtual Environment
+8. Exit the Python Virtual Environment:
 ```sh
 deactivate
 ```
 
-9. Create a file to transfer
+9. Create a file to transfer:
 ```sh
 echo "Created a file for testing this program..." > test_file
 ```
@@ -88,7 +91,7 @@ deactivate
 After running the program:
 - Navigate to the `server_files` directory to see if the file is present there
 - The transferred file will have a `_svr` in its name
-- In a free terminal, run this command to perform a comparison between both files:
+- In a free terminal, be sure you're in the `FTPQUIC` folder and run this command to perform a comparison between both files:
 ```sh
 diff test_file server_files/test_file_svr
 ```
@@ -141,5 +144,4 @@ Server Side:
 python3 file_transfer.py server -h
 ```
 
-Extra Credit
-Summary: https://github.com/jcm0905/CS544/blob/main/FTPQUIC/summary_ec.txt
+Extra Credit Summary: https://github.com/jcm0905/CS544/blob/main/FTPQUIC/summary_ec.txt
