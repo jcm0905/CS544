@@ -66,17 +66,17 @@ echo "Created a file for testing this program..." > test_file
 
 2. Navigate to the `FTPQUIC` folder in both terminals
 
-4. Activate the Python Virtual Environment in both terminals:
+3. Activate the Python Virtual Environment in both terminals:
 ```sh
 source venv/bin/activate
 ```
 
-3. Start the server with defaults in one terminal:
+4. Start the server with defaults in one terminal:
 ```sh
 python3 file_transfer.py server
 ```
 
-4. Run the client with defaults in the other terminal:
+5. Run the client with defaults in the other terminal:
 ```sh
 python3 file_transfer.py client -f test_file
 ```
@@ -86,7 +86,9 @@ The client will timeout after a minute or two if it cannot find the server with 
 After `-f`, feel free to use any file name for a file you would like to send from the client to the server.
 The server will continue to run, and you can continue running the client by executing the same command as shown in (4) to transfer different files to the server.
 
-5. When finished, exit the Python Virtual Environment in both terminals:
+6. When finished sending files, shut down the server by performing a keyboard interrupt (Ctrl-C) in the server-side terminal.
+  
+7. Exit the Python Virtual Environment in both terminals:
 ```sh
 deactivate
 ```
