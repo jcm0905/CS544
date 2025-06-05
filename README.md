@@ -89,7 +89,7 @@ The client will timeout after a minute or two if it cannot find the server with 
 After `-f`, feel free to use any file name for a file you would like to send from the client to the server.
 The server will continue to run, and you can continue running the client by executing the same command as shown in (4) to transfer different files to the server.
 
-Review the [Configuration] (#Configuration) section for more options.
+Review the [Configuration](#Configuration) section for more options.
 
 6. When finished sending files, shut down the server by performing a keyboard interrupt (Ctrl-C) in the server-side terminal.
   
