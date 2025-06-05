@@ -81,7 +81,7 @@ python3 file_transfer.py server
 python3 file_transfer.py client -f test_file
 ```
 NOTE: The server does not need to be started first. Alternatively, you can run the client first, where it can find the server.
-The client will timeout after some time if it cannot find the server with the appropriate hostname/IP and port number.
+The client will timeout after a minute or two if it cannot find the server with the appropriate hostname/IP and port number.
 
 After `-f`, feel free to use any file name for a file you would like to send from the client to the server.
 The server will continue to run, and you can continue running the client by executing the same command as shown in (4) to transfer different files to the server.
