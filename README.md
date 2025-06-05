@@ -106,7 +106,7 @@ rm -rf venv
 
 ## Deleting server_files/ directory
 
-If you would like to remove the server_files/ directory to start from scratch, run this command:
+If you would like to remove the `server_files` directory to start from scratch, run this command:
 ```sh
 rm -rf server_files/
 ```
