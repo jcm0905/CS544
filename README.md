@@ -95,7 +95,7 @@ deactivate
 
 ## Verify File Transfer
 
-After running the program:
+After running the program, a new directory should appear in the `FTPQUIC` folder called `server_files`:
 - Navigate to the `server_files` directory to see if the file is present there
 - The transferred file will have a `_svr` in its name
 - In a free terminal, be sure you're in the `FTPQUIC` folder and run this command to perform a comparison between the original file and the transferred file:
