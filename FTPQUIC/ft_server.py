@@ -38,6 +38,7 @@ async def ft_server_proto(scope:Dict, conn:FTQuicConnection):
                 calculated_checksum = hashlib.sha256(received_file_chunk).hexdigest()
                 sequence_number = file_data_datagram.sequence
 
+                # Verify checksums and sequence
                 if calculated_checksum == received_checksum:
                     if sequence_number == last_sequence_number + 1:
                         received_files[filename].extend(received_file_chunk)
