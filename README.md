@@ -33,30 +33,29 @@ bash gencert.sh
 ```sh
 python3 -m venv venv
 ```
-
 You should see a new directory called `venv` appear in the `FTPQUIC` folder.
 
-5. Activate the Python Virtual Environment:
+4. Activate the Python Virtual Environment:
 ```sh
 source venv/bin/activate
 ```
 
-6. Install the software dependencies needed to run the program in the Python Virtual Environment:
+5. Install the software dependencies needed to run the program in the Python Virtual Environment:
 ```sh
 pip install -r requirements.txt
 ```
 
-7. Confirm installation of software dependencies:
+6. Confirm installation of software dependencies:
 ```sh
 pip list
 ```
 
-8. Exit the Python Virtual Environment:
+7. Exit the Python Virtual Environment:
 ```sh
 deactivate
 ```
 
-9. Create a file to transfer:
+8. Create a file to transfer:
 ```sh
 echo "Created a file for testing this program..." > test_file
 ```
