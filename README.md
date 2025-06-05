@@ -140,3 +140,6 @@ Server Side:
 ```sh
 python3 file_transfer.py server -h
 ```
+
+Extra Credit
+Summary: https://github.com/jcm0905/CS544/blob/main/FTPQUIC/summary_ec.txt
